@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import './App.css'
 import authService from "./appwrite/auth"
 import {login, logout} from "./store/authSlice"
@@ -27,7 +29,11 @@ function App() {
       <div className='w-full block'>
         <Header />
         <main>
-        <Outlet />
+        <div className="flex items-center bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+        <FontAwesomeIcon icon={faExclamationTriangle} className="h-5 w-5 mr-2" />
+        <div>Only Registered users can write articles.</div>
+      </div>
+      <Outlet />
         </main>
         <Footer />
       </div>
